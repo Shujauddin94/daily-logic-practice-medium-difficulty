@@ -15,3 +15,20 @@ function largestRectangleArea(heights) {
     return maxArea;
 }
 console.log(largestRectangleArea([2,1,5,6,2,3])); // Output: 10
+
+//  Another way to solve help of chat gpt
+function largestRectangleArea(heights) {
+    let maxArea = 0;
+    const n = heights.length;
+    for (let i = 0; i < n; i++) {
+        let minHeight = heights[i];
+        for (let j = i; j < n; j++) {
+            minHeight = Math.min(minHeight, heights[j]);
+            const area = minHeight * (j - i + 1);
+            maxArea = Math.max(maxArea, area);
+        }
+    }
+    return maxArea;
+}
+
+console.log(largestRectangleArea([2,1,5,6,2,3])); // Output: 10
